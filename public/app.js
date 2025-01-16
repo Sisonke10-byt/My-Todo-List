@@ -33,19 +33,17 @@ const toggleTaskCompletion = (index) => {
   renderTasks();
 };
 
-// Render tasks with filtering
+// Render tasks with icons styled as buttons
 const renderTasks = () => {
   const tasks = fetchTasks();
   const filter = document.getElementById('filter-tasks').value;
-
-  // Filter tasks based on dropdown selection
   const filteredTasks = tasks.filter((task) => {
     if (filter === 'completed') return task.completed;
     if (filter === 'active') return !task.completed;
+    if (filter === 'due-date') return !!task.dueDate;
     return true; // Default to 'all'
   });
 
-  // Render tasks in the list
   const taskContainer = document.querySelector('.toDoList');
   taskContainer.innerHTML = filteredTasks
     .map(
@@ -54,8 +52,12 @@ const renderTasks = () => {
           <span style="text-decoration: ${task.completed ? 'line-through' : 'none'};">
             ${task.text}
           </span>
-          <button class="complete" onclick="toggleTaskCompletion(${index})">Toggle</button>
-          <button class="delete" onclick="removeTask(${index})">Delete</button>
+          <button class="icon-button complete" onclick="toggleTaskCompletion(${index})" title="Mark as Complete">
+            <i class="fas fa-check"></i>
+          </button>
+          <button class="icon-button delete" onclick="removeTask(${index})" title="Delete Task">
+            <i class="fas fa-trash"></i>
+          </button>
         </li>
       `
     )
