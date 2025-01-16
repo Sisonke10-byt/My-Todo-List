@@ -44,7 +44,7 @@ const renderTasks = () => {
           <span style="text-decoration: ${task.completed ? 'line-through' : 'none'};">
             ${task.text}
           </span>
-          <button class="button complete" onclick="toggleTaskCompletion(${index})">Complete</button>
+          <button class="button complete" onclick="toggleTaskCompletion(${index})">completed</button>
           <button class="button delete" onclick="removeTask(${index})">Delete</button>
         </li>
       `

@@ -54,10 +54,45 @@
     width: 24%;
   }
 
-  button{
+  .button {
+    background-color: #e945b8; 
     font-family: 'Gochi Hand', cursive;
-    font-size: 130%; 
+    color: white;
+    border: none; 
+    border-radius: 5px; 
+    padding: 0.5rem 1rem; 
+    font-size: 1rem; 
+    cursor: pointer; 
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
+    transition: all 0.3s ease;
   }
+  
+  .button:hover {
+    background-color: #b282cf; 
+    box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px); 
+  }
+  
+  .button span {
+    display: inline-block;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .button:hover span {
+    transform: scale(1.1); 
+  }
+  
+
+  .form__input {
+    width: 100%; 
+    max-width: 250px; 
+    padding: 0.5rem; 
+    font-size: 1rem; 
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+  }
+
   .input-group {
     display: flex;
     margin-bottom: 20px;
@@ -65,7 +100,7 @@
   
   #task-input {
     flex: 1;
-    padding: 10px;
+    padding: 20px;
     border: 1px solid #ddd;
     border-radius: 4px 0 0 4px;
   }
@@ -104,7 +139,7 @@
   .task button {
     margin-left: 5px;
     border: none;
-    padding: 5px 10px;
+    padding: 5px;
     cursor: pointer;
     border-radius: 4px;
   }
