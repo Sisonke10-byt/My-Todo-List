@@ -77,5 +77,41 @@ document.querySelector('.form').addEventListener('submit', (e) => {
 // Event listener for filtering tasks
 document.getElementById('filter-tasks').addEventListener('change', renderTasks);
 
+// Handle custom heading input
+document.getElementById('heading-textarea').addEventListener('input', (e) => {
+  const customHeading = e.target.value.trim();
+  const headingTitle = document.querySelector('.heading__title');
+
+  // Update the heading title dynamically
+  headingTitle.textContent = customHeading || 'To-Do List'; // Default if empty
+});
+
+// Initialize the date input with the current date
+const initializeDate = () => {
+  const dateInput = document.getElementById('heading-date');
+  const today = new Date().toISOString().split('T')[0]; // Format as YYYY-MM-DD
+  dateInput.value = today;
+
+  // Save the date to localStorage if not already saved
+  const savedDate = localStorage.getItem('headingDate');
+  if (savedDate) {
+    dateInput.value = savedDate;
+  } else {
+    localStorage.setItem('headingDate', today);
+  }
+};
+
+// Update localStorage when the date is changed
+const handleDateChange = () => {
+  const dateInput = document.getElementById('heading-date');
+  localStorage.setItem('headingDate', dateInput.value);
+};
+
+// Event listener for date input changes
+document.getElementById('heading-date').addEventListener('change', handleDateChange);
+
+// Initialize the date on page load
+document.addEventListener('DOMContentLoaded', initializeDate);
+
 // Initial render
 renderTasks();

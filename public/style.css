@@ -93,6 +93,57 @@
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   }
   
+  /* Styling for the heading textarea */
+.heading-textarea-container {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.heading-textarea {
+  width: 90%;
+  max-width: 400px;
+  height: 50px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 0.5rem;
+  font-family: 'Gochi Hand', cursive;
+  font-size: 1rem;
+  box-sizing: border-box;
+  outline: none;
+  resize: none;
+}
+
+.heading-textarea:focus {
+  border-color: hsl(198, 1%, 29%);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Date input styling */
+.heading__date {
+  margin-left: 1rem;
+  font-size: 0.9rem;
+  font-family: 'Gochi Hand', cursive;
+  padding: 0.3rem;
+  border: 1px solid hsl(198, 1%, 29%);
+  border-radius: 4px;
+  background-color: #f1f5f8;
+  color: hsl(198, 1%, 29%);
+  outline: none;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.heading__date:focus {
+  border-color: hsl(198, 1%, 39%);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+
+.filter-dropdown{
+  font-family: 'Gochi Hand', cursive;
+}
+
   .form__input {
     width: 100%; 
     max-width: 250px; 
