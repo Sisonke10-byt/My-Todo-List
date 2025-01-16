@@ -82,8 +82,17 @@
   .button:hover span {
     transform: scale(1.1); 
   }
-  
 
+  .filter-dropdown {
+    margin: 1rem 0;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
   .form__input {
     width: 100%; 
     max-width: 250px; 
