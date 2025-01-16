@@ -42,7 +42,6 @@ const renderTasks = () => {
   const filteredTasks = tasks.filter((task) => {
     if (filter === 'completed') return task.completed;
     if (filter === 'active') return !task.completed;
-    if (filter === 'due-date') return !!task.dueDate;
     return true; // Default to 'all'
   });
 
