@@ -17,7 +17,6 @@ const renderTasks = () => {
   const filteredTasks = tasks.filter((task) => {
     if (filter === 'completed') return task.completed;
     if (filter === 'active') return !task.completed;
-    if (filter === 'due-date') return !!task.dueDate;
     return true; // Default to 'all'
   });
 
@@ -86,7 +85,19 @@ document.getElementById('heading-textarea').addEventListener('input', (e) => {
 
   // Update the heading title dynamically
   headingTitle.textContent = customHeading || 'To-Do List'; // Default if empty
+
+  // Ensure the textarea height adjusts dynamically
+adjustTextareaHeight(e.target);
 });
+
+// Function to adjust textarea height automatically based on content
+function adjustTextareaHeight(textarea) {
+  // Reset height to auto so it shrinks when text is deleted
+  textarea.style.height = 'auto';
+
+  // Set the height to match the content
+  textarea.style.height = textarea.scrollHeight + 'px';
+}
 
 // Initialize the date input with the current date
 const initializeDate = () => {
