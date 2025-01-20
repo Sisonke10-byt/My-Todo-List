@@ -9,34 +9,11 @@ const saveTasks = (tasks) => {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
-// Add a task
-const addTask = (taskText) => {
-  const tasks = fetchTasks();
-  tasks.push({ text: taskText, completed: false, dueDate: null });
-  saveTasks(tasks);
-  renderTasks();
-};
-
-// Remove a task
-const removeTask = (index) => {
-  const tasks = fetchTasks();
-  tasks.splice(index, 1);
-  saveTasks(tasks);
-  renderTasks();
-};
-
-// Toggle task completion
-const toggleTaskCompletion = (index) => {
-  const tasks = fetchTasks();
-  tasks[index].completed = !tasks[index].completed;
-  saveTasks(tasks);
-  renderTasks();
-};
-
 // Render tasks with icons styled as buttons
 const renderTasks = () => {
   const tasks = fetchTasks();
   const filter = document.getElementById('filter-tasks').value;
+  
   const filteredTasks = tasks.filter((task) => {
     if (filter === 'completed') return task.completed;
     if (filter === 'active') return !task.completed;
@@ -62,6 +39,30 @@ const renderTasks = () => {
       `
     )
     .join('');
+};
+
+// Add a task
+const addTask = (taskText) => {
+  const tasks = fetchTasks();
+  tasks.push({ text: taskText, completed: false, dueDate: null });
+  saveTasks(tasks);
+  renderTasks();
+};
+
+// Remove a task
+const removeTask = (index) => {
+  const tasks = fetchTasks();
+  tasks.splice(index, 1);
+  saveTasks(tasks);
+  renderTasks();
+};
+
+// Toggle task completion
+const toggleTaskCompletion = (index) => {
+  const tasks = fetchTasks();
+  tasks[index].completed = !tasks[index].completed;
+  saveTasks(tasks);
+  renderTasks();
 };
 
 // Event listener for adding a task
@@ -91,13 +92,11 @@ document.getElementById('heading-textarea').addEventListener('input', (e) => {
 const initializeDate = () => {
   const dateInput = document.getElementById('heading-date');
   const today = new Date().toISOString().split('T')[0]; // Format as YYYY-MM-DD
-  dateInput.value = today;
-
-  // Save the date to localStorage if not already saved
   const savedDate = localStorage.getItem('headingDate');
-  if (savedDate) {
-    dateInput.value = savedDate;
-  } else {
+
+  dateInput.value = savedDate || today;
+
+  if (!savedDate) {
     localStorage.setItem('headingDate', today);
   }
 };
@@ -112,7 +111,7 @@ const handleDateChange = () => {
 document.getElementById('heading-date').addEventListener('change', handleDateChange);
 
 // Initialize the date on page load
-document.addEventListener('DOMContentLoaded', initializeDate);
-
-// Initial render
-renderTasks();
+document.addEventListener('DOMContentLoaded', () => {
+  initializeDate();
+  renderTasks();
+});
