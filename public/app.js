@@ -13,7 +13,7 @@ const saveTasks = (tasks) => {
 const renderTasks = () => {
   const tasks = fetchTasks();
   const filter = document.getElementById('filter-tasks').value;
-  
+
   const filteredTasks = tasks.filter((task) => {
     if (filter === 'completed') return task.completed;
     if (filter === 'active') return !task.completed;
@@ -65,13 +65,13 @@ const toggleTaskCompletion = (index) => {
   renderTasks();
 };
 
-// Event listener for adding a task
+// Event listener for adding a task (asynchronously simulating task submission)
 document.querySelector('.form').addEventListener('submit', (e) => {
   e.preventDefault(); // Prevent default form submission
   const taskInput = document.getElementById('todo');
   const task = taskInput.value.trim();
   if (task) {
-    addTask(task); // Add the task
+    addTask(task); // Add the task asynchronously
     taskInput.value = ''; // Clear the input field
   }
 });

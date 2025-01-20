@@ -1,49 +1,62 @@
+// server.js
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3001;
+const path = require('path');
 
-let tasks = []; // Store tasks in-memory
+// Set up middleware
+app.use(express.json()); // For parsing application/json
+app.use(express.static(path.join(__dirname, 'public'))); // Serve static files
 
-app.use(express.json()); // Middleware to parse JSON
+// In-memory storage for tasks (simple placeholder)
+let tasks = [];
 
-// Serve static files
-app.use(express.static('public'));
-
-// Get all tasks
+// API: Get all tasks
 app.get('/api/tasks', (req, res) => {
   res.json(tasks);
 });
 
-// Add a new task
+// API: Add a task
 app.post('/api/tasks', (req, res) => {
-  const { text, completed = false, dueDate = null } = req.body;
-  tasks.push({ text, completed, dueDate });
-  res.status(201).json({ message: 'Task added successfully' });
+  const { text } = req.body;
+  const newTask = { text, completed: false, dueDate: null };
+  tasks.push(newTask);
+  res.status(201).json(newTask); // Send back the added task
 });
 
-// Delete a task by index
+// API: Delete a task
 app.delete('/api/tasks/:index', (req, res) => {
-  const index = parseInt(req.params.index, 10);
-  if (index >= 0 && index < tasks.length) {
-    tasks.splice(index, 1);
-    res.json({ message: 'Task deleted successfully' });
-  } else {
-    res.status(404).json({ error: 'Task not found' });
-  }
+  const { index } = req.params;
+  tasks.splice(index, 1); // Remove task by index
+  res.status(204).end(); // No content response for successful delete
 });
 
-// Toggle task completion
+// API: Update task completion
 app.patch('/api/tasks/:index', (req, res) => {
-  const index = parseInt(req.params.index, 10);
-  if (index >= 0 && index < tasks.length) {
-    tasks[index].completed = !tasks[index].completed;
-    res.json({ message: 'Task completion toggled successfully' });
+  const { index } = req.params;
+  const task = tasks[index];
+  if (task) {
+    task.completed = !task.completed;
+    res.json(task);
   } else {
-    res.status(404).json({ error: 'Task not found' });
+    res.status(404).json({ message: 'Task not found' });
   }
 });
 
-// Start the server
+// Serve the main HTML file
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Catch-all route for 404 errors
+app.use((req, res) => {
+  res.status(404).send('404 - Not Found');
+});
+
+// Set up the server to listen on port 3001
+const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
+
+
+
