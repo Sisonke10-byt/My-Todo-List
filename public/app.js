@@ -78,18 +78,6 @@ document.querySelector('.form').addEventListener('submit', (e) => {
 // Event listener for filtering tasks
 document.getElementById('filter-tasks').addEventListener('change', renderTasks);
 
-// Handle custom heading input
-document.getElementById('heading-textarea').addEventListener('input', (e) => {
-  const customHeading = e.target.value.trim();
-  const headingTitle = document.querySelector('.heading__title');
-
-  // Update the heading title dynamically
-  headingTitle.textContent = customHeading || 'To-Do List'; // Default if empty
-
-  // Ensure the textarea height adjusts dynamically
-adjustTextareaHeight(e.target);
-});
-
 // Function to adjust textarea height automatically based on content
 function adjustTextareaHeight(textarea) {
   // Reset height to auto so it shrinks when text is deleted
