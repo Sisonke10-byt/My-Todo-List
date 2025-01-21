@@ -71,10 +71,14 @@ After deployment, your app will be accessible via a public URL provided by Rende
 ├── public
 │   
 ├── index.html       # The main HTML file
-│   ├── style.css       # The CSS file for styling
-│   ├── app.js          # The main JavaScript file for interactivity
-│   ├── background.jpg  # Background image for the page
-│   └── HeadImage.png    # Image for the heading
+│   
+├── style.css       # The CSS file for styling
+│   
+├── app.js          # The main JavaScript file for interactivity
+│   
+├── background.jpg  # Background image for the page
+│   
+└── HeadImage.png    # Image for the heading
 ├── server.js           # Express.js server for task API (optional)
 ├── package.json        # Node.js project dependencies (optional)
 └── README.md           # This file
