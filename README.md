@@ -69,7 +69,8 @@ After deployment, your app will be accessible via a public URL provided by Rende
 
 ### File Structure 
 ├── public
-│   ├── index.html       # The main HTML file
+│   
+├── index.html       # The main HTML file
 │   ├── style.css       # The CSS file for styling
 │   ├── app.js          # The main JavaScript file for interactivity
 │   ├── background.jpg  # Background image for the page
