@@ -47,6 +47,9 @@
     border-radius: 20% 5% 20% 5%/5% 20% 25% 20%;
     background-color: rgb(240, 161, 220);
     font-size: 1.5rem;
+
+    overflow-wrap: anywhere;
+    max-width: 50%;
   }
   @media only screen and (min-width: 500px) {
     .heading__title{
@@ -195,6 +198,9 @@
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
+
+    overflow-wrap: anywhere;
+    max-width: 100%;
   }
   
   .task span {
