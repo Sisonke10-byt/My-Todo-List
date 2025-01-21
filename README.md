@@ -14,14 +14,14 @@ A simple and interactive To-Do List web application that allows users to add, de
 
 ## Technologies Used
 
-- **<i class="fab fa-html5"></i> HTML5**: For the structure of the page.
-- **<i class="fab fa-css3-alt"></i> CSS3**: For styling the application, with a responsive design.
-- **<i class="fab fa-js-square"></i> JavaScript**: For interactivity (task management, filtering, localStorage).
-- **<i class="fab fa-font-awesome"></i> Font Awesome**: For icons (check and delete task icons).
-- **<i class="fab fa-node-js"></i> Express.js**: For the backend API to manage tasks (optional based on server-side setup).
-- **<i class="fab fa-html5"></i> LocalStorage**: For storing tasks in the browser.
-- **<i class="fab fa-node-js"></i> Node.js**: For running the backend server.
-- **<i class="fab fa-render"></i> Render**: For deploying the application online.
+- **HTML5**: For the structure of the page.
+- **CSS3**: For styling the application, with a responsive design.
+- **JavaScript**: For interactivity (task management, filtering, localStorage).
+- **Font Awesome**: For icons (check and delete task icons).
+- **Express.js**: For the backend API to manage tasks (optional based on server-side setup).
+- **LocalStorage**: For storing tasks in the browser.
+- **Node.js**: For running the backend server.
+- **Render**: For deploying the application online.
 
 
 ## Installation
@@ -32,7 +32,7 @@ A simple and interactive To-Do List web application that allows users to add, de
    git clone https://github.com/yourusername/todo-list.git
    
 2. Navigate to the project folder:
-cd todo-list
+   cd todo-list
 
 3. Open the index.html file in your browser.
 
@@ -54,33 +54,35 @@ If you want to use a backend server for task management:
 Ensure that you have Node.js installed. You can check by running:
 
 
-
-Deployment on Render
+### Deployment on Render
 To deploy this app using Render:
 
-Push your code to a GitHub repository.
-Sign up or log in to Render.
-Create a new Web Service and link it to your GitHub repository.
-Choose Node.js as the environment and configure the build and start commands:
-Build Command: npm install
-Start Command: npm start
-Click Create Web Service and Render will automatically deploy the app.
-After deployment, your app will be accessible via a public URL provided by Render.
+1. Push your code to a GitHub repository.
+2. Sign up or log in to Render.
+3. Create a new Web Service and link it to your GitHub repository.
+4. Choose Node.js as the environment and configure the build and start commands:
+5. Build Command: npm install
+6. Start Command: npm start
+7. Click Create Web Service and Render will automatically deploy the app.
+8. After deployment, your app will be accessible via a public URL provided by Render.
 
 ### File Structure 
 ├── public
-│   
-├── index.html       # The main HTML file
-│   
-├── style.css       # The CSS file for styling
-│   
-├── app.js          # The main JavaScript file for interactivity
-│   
-├── background.jpg  # Background image for the page
-│   
-└── HeadImage.png    # Image for the heading
+
+│   ├── index.html       # The main HTML file
+
+│   ├── style.css       # The CSS file for styling
+
+│   ├── app.js          # The main JavaScript file for interactivity
+
+│   ├── background.jpg  # Background image for the page
+
+│   └── HeadImage.png    # Image for the heading
+
 ├── server.js           # Express.js server for task API (optional)
+
 ├── package.json        # Node.js project dependencies (optional)
+
 └── README.md           # This file
 
 ### Usage 
