@@ -203,9 +203,8 @@
     justify-content: space-between;
     margin: 5px 0;
     padding: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid gray;
     border-radius: 5px;
-
     overflow-wrap: anywhere;
     max-width: 100%;
   }
@@ -364,9 +363,13 @@
     font-size: 1rem;
     padding: 6px;
   }
+
+  .task{
+    justify-content: space-between;
+  }
 }
 
-/* Extremely small screens */
+
 @media only screen and (max-width: 320px) {
   body {
     font-size: 110%;
@@ -377,7 +380,6 @@
   .container {
     width: 100%;
     padding: 1rem;
-
   }
 
   .heading__title {
@@ -403,9 +405,12 @@
     width: 40%;
   }
 
+  .heading__date{
+    padding: 0.3rem;
+  }
+
   .task {
     font-size: 0.9rem;
   }
 }
 
- 

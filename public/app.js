@@ -195,3 +195,6 @@ document.addEventListener('DOMContentLoaded', () => {
     typingElement.classList.add('stop-blink'); // Add class to stop the caret
   });
 });
+
+
+
