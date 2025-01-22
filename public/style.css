@@ -5,7 +5,7 @@
   background-size: cover; 
   background-position: center; 
   background-repeat: no-repeat; 
-  min-height: 70vh;
+  min-height: 100vh;
   padding: 1rem;
   box-sizing: border-box;
   display: flex;
@@ -19,6 +19,7 @@
   @media only screen and (min-width: 500px) {
     body {
       min-height: 100vh;
+      width: 100%;
     }
   }
   
@@ -51,7 +52,8 @@
     max-width: 50%;
   }
   @media only screen and (min-width: 500px) {
-    .heading__title{
+    
+    .heading__title {
       font-size: 2rem;
     }
   }
@@ -60,12 +62,12 @@
     display: inline-block;
     overflow: hidden;
     white-space: nowrap;
-    border-right: 2px solid #000; /* Cursor effect */
+    border-right: 2px solid #000; 
     font-size: 1.5rem;
     animation: typing 3s steps(12, end), blink-caret 0.5s step-end infinite;
+    animation-fill-mode: forwards;
   }
   
-  /* Animation for typing */
   @keyframes typing {
     from {
       width: 0;
@@ -75,7 +77,6 @@
     }
   }
   
-  /* Blinking cursor effect */
   @keyframes blink-caret {
     from, to {
       border-color: transparent;
@@ -83,6 +84,11 @@
     50% {
       border-color: black;
     }
+  }
+
+  .typing-animation.stop-blink {
+    animation: typing 3s steps(12, end), none;
+    border-right: none; /* Remove blinking caret */
   }
   
   .heading__img {
@@ -128,16 +134,16 @@
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   }
   
-/* Date input styling */
+
 .heading__date {
   margin-left: 1rem;
   font-size: 0.9rem;
   font-family: 'Gochi Hand', cursive;
   padding: 0.3rem;
-  border: 1px solid hsl(198, 1%, 29%);
-  border-radius: 4px;
-  background-color: #f1f5f8;
-  color: hsl(198, 1%, 29%);
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #f876d1;
+  color: black;
   outline: none;
   box-sizing: border-box;
   cursor: pointer;
@@ -229,12 +235,12 @@
   }
   
   .icon-button.complete:hover {
-    background-color: #d4edda; /* Light green background */
+    background-color: #d4edda; 
     color: green;
   }
   
   .icon-button.delete:hover {
-    background-color: #f8d7da; /* Light red background */
+    background-color: #f8d7da; 
     color: red;
   }
   
@@ -242,6 +248,119 @@
     list-style: none;
     padding: 0;
   }
-  
-  
-  
+
+
+@media only screen and (max-width: 768px) {
+  body {
+    font-size: 120%;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .heading__title {
+    font-size: 1.8rem;
+  }
+
+  .heading__img {
+    width: 30%;
+  }
+
+  .task {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .button {
+    font-size: 1.1rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .form__input {
+    font-size: 0.9rem;
+    padding: 0.4rem;
+  }
+
+  .icon-button {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .body{
+    background-size: cover;
+  }
+  .heading__title {
+    font-size: 1.5rem;
+  }
+
+  .container {
+    max-width: 90%;
+    min-width: 100%;
+  }
+
+  .button {
+    font-size: 1rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .filter-dropdown {
+    font-size: 0.9rem;
+  }
+
+  .form__input {
+    font-size: 0.8rem;
+    padding: 0.3rem;
+  }
+
+  .icon-button {
+    font-size: 1rem;
+    padding: 6px;
+  }
+}
+
+/* Extremely small screens */
+@media only screen and (max-width: 320px) {
+  body {
+    font-size: 110%;
+    background-size: cover;
+    width: 100%;
+  }
+
+  .container {
+    width: 100%;
+    padding: 1rem;
+
+  }
+
+  .heading__title {
+    font-size: 1.4rem;
+  }
+
+  .button {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  .form__input {
+    font-size: 0.7rem;
+    padding: 0.3rem;
+  }
+
+  .icon-button {
+    font-size: 0.9rem;
+    padding: 6px;
+  }
+
+  .heading__img {
+    width: 40%;
+  }
+
+  .task {
+    font-size: 0.9rem;
+  }
+}
+
+ 

@@ -96,7 +96,8 @@ const initializeDate = () => {
   dateInput.value = savedDate || today;
 
   if (!savedDate) {
-    localStorage.setItem('headingDate', today);
+    localStorage.setItem('headingDate', today); 
+
   }
 };
 
@@ -113,4 +114,13 @@ document.getElementById('heading-date').addEventListener('change', handleDateCha
 document.addEventListener('DOMContentLoaded', () => {
   initializeDate();
   renderTasks();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const typingElement = document.querySelector('.typing-animation');
+
+  // Add a listener for animationend to remove the blinking caret
+  typingElement.addEventListener('animationend', () => {
+    typingElement.classList.add('stop-blink'); // Add class to stop the caret
+  });
 });
