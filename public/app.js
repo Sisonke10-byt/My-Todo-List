@@ -9,6 +9,7 @@ const saveTasks = (tasks) => {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
+// Render tasks with drag-and-drop functionality
 const renderTasks = () => {
   const tasks = fetchTasks();
   const filter = document.getElementById('filter-tasks').value;
@@ -23,24 +24,58 @@ const renderTasks = () => {
   taskContainer.innerHTML = filteredTasks
     .map(
       (task, index) => `
-        <li class="task">
-          <span class="task-text" style="text-decoration: ${task.completed ? 'line-through' : 'none'};">
+        <li class="task" draggable="true" ondragstart="handleDragStart(event, ${index})" ondragover="handleDragOver(event)" ondrop="handleDrop(event, ${index})">
+          <span style="text-decoration: ${task.completed ? 'line-through' : 'none'};">
             ${task.text}
           </span>
           <button class="icon-button complete" onclick="toggleTaskCompletion(${index})" title="Mark as Complete">
             <i class="fas fa-check"></i>
           </button>
-          <button class="icon-button edit" onclick="enableInlineEditing(${index})" title="Edit Task">
-            <i class="fas fa-edit"></i>
-          </button>
           <button class="icon-button delete" onclick="removeTask(${index})" title="Delete Task">
             <i class="fas fa-trash"></i>
+          </button>
+          <button class="icon-button edit" onclick="enableInlineEditing(${index})" title="Edit Task">
+            <i class="fas fa-edit"></i>
           </button>
         </li>
       `
     )
     .join('');
 };
+
+// Drag-and-drop functions
+let draggedTaskIndex = null;
+
+// Handle drag start
+const handleDragStart = (event, index) => {
+  draggedTaskIndex = index;
+  event.dataTransfer.effectAllowed = 'move';
+};
+
+// Prevent default behavior for dragover
+const handleDragOver = (event) => {
+  event.preventDefault();
+};
+
+// Handle drop and reorder tasks
+const handleDrop = (event, dropIndex) => {
+  event.preventDefault();
+  const tasks = fetchTasks();
+
+  // Reorder tasks
+  const draggedTask = tasks[draggedTaskIndex];
+  tasks.splice(draggedTaskIndex, 1);
+  tasks.splice(dropIndex, 0, draggedTask);
+
+  saveTasks(tasks);
+  renderTasks();
+};
+
+// Initialize app on page load
+document.addEventListener('DOMContentLoaded', () => {
+  initializeDate();
+  renderTasks();
+});
 
 // Add a task
 const addTask = (taskText) => {

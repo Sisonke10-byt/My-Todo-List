@@ -88,7 +88,7 @@
 
   .typing-animation.stop-blink {
     animation: typing 3s steps(12, end), none;
-    border-right: none; /* Remove blinking caret */
+    border-right: none;
   }
   
   .heading__img {
@@ -214,6 +214,26 @@
     flex-grow: 1;
     text-align: left;
   }
+
+  .task {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: grab;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease;
+  }
+  
+  .task:active {
+    cursor: grabbing;
+  }
+  
+  .task.dragover {
+    background-color: #e3e3e3;
+    border-color: #888;
+  }
+  
   
   .icon-button {
     margin-left: 10px;
