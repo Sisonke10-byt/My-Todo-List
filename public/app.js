@@ -9,7 +9,6 @@ const saveTasks = (tasks) => {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
-// Render tasks with icons styled as buttons
 const renderTasks = () => {
   const tasks = fetchTasks();
   const filter = document.getElementById('filter-tasks').value;
@@ -25,11 +24,14 @@ const renderTasks = () => {
     .map(
       (task, index) => `
         <li class="task">
-          <span style="text-decoration: ${task.completed ? 'line-through' : 'none'};">
+          <span class="task-text" style="text-decoration: ${task.completed ? 'line-through' : 'none'};">
             ${task.text}
           </span>
           <button class="icon-button complete" onclick="toggleTaskCompletion(${index})" title="Mark as Complete">
             <i class="fas fa-check"></i>
+          </button>
+          <button class="icon-button edit" onclick="enableInlineEditing(${index})" title="Edit Task">
+            <i class="fas fa-edit"></i>
           </button>
           <button class="icon-button delete" onclick="removeTask(${index})" title="Delete Task">
             <i class="fas fa-trash"></i>
@@ -54,6 +56,40 @@ const removeTask = (index) => {
   tasks.splice(index, 1);
   saveTasks(tasks);
   renderTasks();
+};
+
+// Edit a task inline
+const enableInlineEditing = (index) => {
+  const tasks = fetchTasks();
+  const taskContainer = document.querySelectorAll('.task')[index];
+  const taskTextElement = taskContainer.querySelector('.task-text');
+  const taskText = tasks[index].text;
+
+  // Replace the span with an input field
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.value = taskText;
+  input.className = 'edit-input';
+  taskContainer.replaceChild(input, taskTextElement);
+
+  input.focus();
+
+  // Save changes on blur or Enter key
+  const saveChanges = () => {
+    const updatedText = input.value.trim();
+    if (updatedText) {
+      tasks[index].text = updatedText;
+      saveTasks(tasks);
+      renderTasks();
+    } else {
+      alert('Task cannot be empty!');
+    }
+  };
+
+  input.addEventListener('blur', saveChanges);
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') saveChanges();
+  });
 };
 
 // Toggle task completion
