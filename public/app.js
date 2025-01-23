@@ -9,7 +9,40 @@ const saveTasks = (tasks) => {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
-// Render tasks with drag-and-drop functionality
+// Edit a task inline
+const enableInlineEditing = (index) => {
+  const tasks = fetchTasks();
+  const taskContainer = document.querySelectorAll('.task')[index];
+  const taskTextElement = taskContainer.querySelector('.task-text');
+  const taskText = tasks[index].text;
+
+  // Replace the span with an input field
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.value = taskText;
+  input.className = 'edit-input';
+  taskContainer.replaceChild(input, taskTextElement);
+
+  input.focus();
+
+  // Save changes on blur or Enter key
+  const saveChanges = () => {
+    const updatedText = input.value.trim();
+    if (updatedText) {
+      tasks[index].text = updatedText;
+      saveTasks(tasks);
+      renderTasks();
+    } else {
+      alert('Task cannot be empty!');
+    }
+  };
+
+  input.addEventListener('blur', saveChanges);
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') saveChanges();
+  });
+};
+
 const renderTasks = () => {
   const tasks = fetchTasks();
   const filter = document.getElementById('filter-tasks').value;
@@ -24,18 +57,18 @@ const renderTasks = () => {
   taskContainer.innerHTML = filteredTasks
     .map(
       (task, index) => `
-        <li class="task" draggable="true" ondragstart="handleDragStart(event, ${index})" ondragover="handleDragOver(event)" ondrop="handleDrop(event, ${index})">
-          <span style="text-decoration: ${task.completed ? 'line-through' : 'none'};">
+        <li class="task">
+          <span class="task-text" style="text-decoration: ${task.completed ? 'line-through' : 'none'};">
             ${task.text}
           </span>
           <button class="icon-button complete" onclick="toggleTaskCompletion(${index})" title="Mark as Complete">
             <i class="fas fa-check"></i>
           </button>
-          <button class="icon-button delete" onclick="removeTask(${index})" title="Delete Task">
-            <i class="fas fa-trash"></i>
-          </button>
           <button class="icon-button edit" onclick="enableInlineEditing(${index})" title="Edit Task">
             <i class="fas fa-edit"></i>
+          </button>
+          <button class="icon-button delete" onclick="removeTask(${index})" title="Delete Task">
+            <i class="fas fa-trash"></i>
           </button>
         </li>
       `
@@ -99,39 +132,6 @@ const removeTask = (index) => {
   renderTasks();
 };
 
-// Edit a task inline
-const enableInlineEditing = (index) => {
-  const tasks = fetchTasks();
-  const taskContainer = document.querySelectorAll('.task')[index];
-  const taskTextElement = taskContainer.querySelector('.task-text');
-  const taskText = tasks[index].text;
-
-  // Replace the span with an input field
-  const input = document.createElement('input');
-  input.type = 'text';
-  input.value = taskText;
-  input.className = 'edit-input';
-  taskContainer.replaceChild(input, taskTextElement);
-
-  input.focus();
-
-  // Save changes on blur or Enter key
-  const saveChanges = () => {
-    const updatedText = input.value.trim();
-    if (updatedText) {
-      tasks[index].text = updatedText;
-      saveTasks(tasks);
-      renderTasks();
-    } else {
-      alert('Task cannot be empty!');
-    }
-  };
-
-  input.addEventListener('blur', saveChanges);
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') saveChanges();
-  });
-};
 
 // Toggle task completion
 const toggleTaskCompletion = (index) => {

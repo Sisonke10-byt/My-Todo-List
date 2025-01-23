@@ -273,22 +273,6 @@
     color: orange;
   }
   
-  .edit-input {
-    width: 100%;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 0.3rem;
-    box-sizing: border-box;
-  }
-  
-  .edit-input:focus {
-    border-color: #80bdff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    outline: none;
-  }
-  
-  
   .toDoList {
     list-style: none;
     padding: 0;
