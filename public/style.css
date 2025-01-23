@@ -16,13 +16,7 @@
   font-size: 130%;  
   }
 
-  @media only screen and (min-width: 500px) {
-    body {
-      min-height: 100vh;
-      width: 100%;
-    }
-  }
-  
+ 
   .container {
     width: 100%;
     height: auto;
@@ -51,12 +45,7 @@
     overflow-wrap: anywhere;
     max-width: 50%;
   }
-  @media only screen and (min-width: 500px) {
-    
-    .heading__title {
-      font-size: 2rem;
-    }
-  }
+ 
 
   .typing-animation {
     display: inline-block;
@@ -93,8 +82,19 @@
   
   .heading__img {
     width: 24%;
+    animation: swing 1.5s infinite ease-in-out;
+    transform-origin: top center;
   }
 
+  @keyframes swing {
+    0%, 100% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(15deg);
+    }
+  }
+   
   .button {
     background-color: #e945b8; 
     font-family: 'Gochi Hand', cursive;
@@ -292,125 +292,4 @@
     list-style: none;
     padding: 0;
   }
-
-
-@media only screen and (max-width: 768px) {
-  body {
-    font-size: 120%;
-  }
-
-  .container {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .heading__title {
-    font-size: 1.8rem;
-  }
-
-  .heading__img {
-    width: 30%;
-  }
-
-  .task {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .button {
-    font-size: 1.1rem;
-    padding: 0.4rem 0.8rem;
-  }
-
-  .form__input {
-    font-size: 0.9rem;
-    padding: 0.4rem;
-  }
-
-  .icon-button {
-    font-size: 1rem;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  .body{
-    background-size: cover;
-  }
-  .heading__title {
-    font-size: 1.5rem;
-  }
-
-  .container {
-    max-width: 90%;
-    min-width: 100%;
-  }
-
-  .button {
-    font-size: 1rem;
-    padding: 0.3rem 0.6rem;
-  }
-
-  .filter-dropdown {
-    font-size: 0.9rem;
-  }
-
-  .form__input {
-    font-size: 0.8rem;
-    padding: 0.3rem;
-  }
-
-  .icon-button {
-    font-size: 1rem;
-    padding: 6px;
-  }
-
-  .task{
-    justify-content: space-between;
-  }
-}
-
-
-@media only screen and (max-width: 320px) {
-  body {
-    font-size: 110%;
-    background-size: cover;
-    width: 100%;
-  }
-
-  .container {
-    width: 100%;
-    padding: 1rem;
-  }
-
-  .heading__title {
-    font-size: 1.4rem;
-  }
-
-  .button {
-    font-size: 0.9rem;
-    padding: 0.3rem 0.5rem;
-  }
-
-  .form__input {
-    font-size: 0.7rem;
-    padding: 0.3rem;
-  }
-
-  .icon-button {
-    font-size: 0.9rem;
-    padding: 6px;
-  }
-
-  .heading__img {
-    width: 40%;
-  }
-
-  .heading__date{
-    padding: 0.3rem;
-  }
-
-  .task {
-    font-size: 0.9rem;
-  }
-}
 
