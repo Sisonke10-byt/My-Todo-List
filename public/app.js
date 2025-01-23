@@ -43,6 +43,12 @@ const renderTasks = () => {
     .join('');
 };
 
+document.body.addEventListener('mousemove', (e) => {
+  const x = e.clientX / window.innerWidth * 255;
+  const y = e.clientY / window.innerHeight * 255;
+  document.body.style.background = `rgb(${x}, ${y}, 200)`;
+});
+
 // Drag-and-drop functions
 let draggedTaskIndex = null;
 
@@ -195,6 +201,9 @@ document.addEventListener('DOMContentLoaded', () => {
     typingElement.classList.add('stop-blink'); // Add class to stop the caret
   });
 });
+
+
+
 
 
 

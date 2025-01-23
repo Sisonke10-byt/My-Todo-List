@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Gochi+Hand');
 
   body {
-  background-image: url('background.jpg');
+  /*background-image: url('background.jpg');*/
   background-size: cover; 
   background-position: center; 
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;
   min-height: 100vh;
   padding: 1rem;
   box-sizing: border-box;
@@ -14,6 +14,7 @@
   font-family: 'Gochi Hand', cursive;
   text-align: center;
   font-size: 130%;  
+  transition: all 0.3s ease;
   }
 
  
@@ -105,13 +106,13 @@
     font-size: 1rem; 
     cursor: pointer; 
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
-    transition: all 0.3s ease;
+    /*transition: all 0.3s ease;*/
   }
   
   .button:hover {
     background-color: #b282cf; 
     box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.3);
-    transform: translateY(-2px); 
+    transform: translateY(-2px);
   }
   
   .button span {
@@ -128,8 +129,8 @@
     margin: 1rem 0;
     padding: 0.5rem;
     font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid #f876d1;
+    border-radius: 10px;
     background-color: #fff;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   }
