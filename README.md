@@ -7,7 +7,9 @@ link: https://my-todo-list-3u54.onrender.com/
 
 - Add new tasks with a text input.
 - Mark tasks as completed or active.
+- Edit task inline
 - Delete tasks.
+- Re-arrange task
 - Filter tasks by their completion status: All, Completed, or Active.
 - Date input to set a due date for tasks.
 - Automatically adjust the textarea height based on the content of the task.
