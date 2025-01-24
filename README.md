@@ -29,7 +29,7 @@ A simple and interactive To-Do List web application that allows users to add, de
 ### Frontend (Client-side)
 
 1. Clone the repository:
-   git clone https://github.com/yourusername/todo-list.git
+   git clone https://github.com/Sisonke10-byt/My-Todo-List.git
    
 2. Navigate to the project folder:
    cd todo-list
